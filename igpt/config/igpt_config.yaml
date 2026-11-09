@@ -1,0 +1,24 @@
+DATA:
+  root_dir: "data"
+  dataset: "fmnist"
+  img_size: 28
+  boi_token: 256
+
+TRAINING:
+  n_epochs: 100
+  batch_size: 64
+  lr: 3e-4
+
+MODEL:
+  vocab_size: 257
+  embed_dim: 256
+  n_encoders: 4
+  n_heads: 4
+  dropout_rate: 0.2
+
+GENERATOR:
+  state_dict_path: "artifacts/model/igpt_model.pth"
+
+LOGGING:
+  logging_dir: "artifacts/logs"
+  media_dir: "artifacts/media"
