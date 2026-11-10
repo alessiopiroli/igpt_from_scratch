@@ -10,10 +10,8 @@ class Generator:
     def __init__(self, cfg):
         self.cfg = cfg
         self.img_size = self.cfg.DATA.img_size
-        self.seq_len = self.img_size ** 2
-        self.state_dict_path = os.path.join(
-            self.cfg.GENERATOR.model_dir, f"igpt_model_{self.cfg.DATA.dataset}.pth"
-        )
+        self.seq_len = self.img_size**2
+        self.state_dict_path = os.path.join(self.cfg.GENERATOR.model_dir, f"igpt_model_{self.cfg.DATA.dataset}.pth")
         self.logger, self.writer, self.experiment_dir = setup_logging(self.cfg)
         self.build_model()
 

@@ -8,14 +8,11 @@ class FashionMNISTDataset(Dataset):
     def __init__(self, cfg, train=True, download=True):
         self.cfg = cfg
         self.img_size = self.cfg.DATA.img_size
-        self.seq_len = self.img_size ** 2
+        self.seq_len = self.img_size**2
         self.boi_token = torch.tensor([self.cfg.DATA.boi_token]).to(torch.long)
 
         self.dataset = FashionMNIST(
-            root=self.cfg.DATA.root_dir,
-            train=train,
-            download=download,
-            transform=transforms.PILToTensor()
+            root=self.cfg.DATA.root_dir, train=train, download=download, transform=transforms.PILToTensor()
         )
 
     def __len__(self):

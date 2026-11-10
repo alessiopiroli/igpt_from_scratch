@@ -6,7 +6,7 @@ class AttnHead(nn.Module):
     def __init__(self, cfg):
         super().__init__()
         self.cfg = cfg
-        self.context_size = self.cfg.DATA.img_size ** 2
+        self.context_size = self.cfg.DATA.img_size**2
         self.context_size = self.context_size
         self.embed_dim = self.cfg.MODEL.embed_dim
         self.n_heads = self.cfg.MODEL.n_heads
@@ -91,7 +91,7 @@ class GPT(nn.Module):
     def __init__(self, cfg):
         super().__init__()
         self.cfg = cfg
-        self.context_size = self.cfg.DATA.img_size ** 2
+        self.context_size = self.cfg.DATA.img_size**2
         self.batch_size = self.cfg.TRAINING.batch_size
         self.context_size = self.context_size
         self.n_encoders = self.cfg.MODEL.n_encoders

@@ -45,8 +45,6 @@ def setup_logging(config):
     return logger, writer, experiment_dir
 
 
-
-
 def get_device(logger):
     if torch.cuda.is_available():
         device = torch.device("cuda")
@@ -61,7 +59,7 @@ def get_device(logger):
 
 
 def log_model(cfg, logger, model, batch_size, device):
-    summary(model, input_data=torch.randint(0, 255, (1, cfg.DATA.img_size ** 2), device=device))
+    summary(model, input_data=torch.randint(0, 255, (1, cfg.DATA.img_size**2), device=device))
 
 
 def log_data(logger, train_dataset, val_dataset, train_loader, val_loader):

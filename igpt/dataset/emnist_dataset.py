@@ -5,26 +5,14 @@ from torchvision.datasets import EMNIST
 
 
 class EMNISTDataset(Dataset):
-    def __init__(
-        self,
-        cfg,
-        train=True,
-        download=True,
-        split="balanced"
-    ):
+    def __init__(self, cfg, train=True, download=True, split="balanced"):
         self.cfg = cfg
         self.img_size = self.cfg.DATA.img_size
-        self.seq_len = self.img_size ** 2
-        self.boi_token = torch.tensor(
-            [self.cfg.DATA.boi_token]
-        ).to(torch.long)
+        self.seq_len = self.img_size**2
+        self.boi_token = torch.tensor([self.cfg.DATA.boi_token]).to(torch.long)
 
         self.dataset = EMNIST(
-            root=self.cfg.DATA.root_dir,
-            split=split,
-            train=train,
-            download=download,
-            transform=transforms.PILToTensor()
+            root=self.cfg.DATA.root_dir, split=split, train=train, download=download, transform=transforms.PILToTensor()
         )
 
     def __len__(self):

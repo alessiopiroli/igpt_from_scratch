@@ -6,8 +6,7 @@ from tqdm import tqdm
 from igpt.dataset.emnist_dataset import EMNISTDataset
 from igpt.dataset.fashion_mnist_dataset import FashionMNISTDataset
 from igpt.model.igpt_model import GPT
-from igpt.utils.misc import (get_device, log_data, log_epoch, log_model,
-                             setup_logging)
+from igpt.utils.misc import get_device, log_data, log_epoch, log_model, setup_logging
 
 
 class Trainer:
@@ -24,13 +23,11 @@ class Trainer:
         self.training_steps = 1
         self.validation_steps = 1
 
-
     def build_model(self):
         self.device = get_device(self.logger)
         self.model = GPT(self.cfg)
         self.model = self.model.to(self.device)
         log_model(self.cfg, self.logger, self.model, self.batch_size, self.device)
-
 
     def build_dataloaders(self):
         if self.cfg.DATA.dataset == "fmnist":
@@ -47,30 +44,20 @@ class Trainer:
 
         log_data(self.logger, self.train_dataset, self.validation_dataset, self.train_loader, self.validation_loader)
 
-
     def train(self):
         for epoch in range(self.n_epochs):
             train_loss = self.train_one_epoch(epoch)
             val_loss = self.validate_one_epoch(epoch)
 
             log_epoch(
-                self.logger,
-                self.writer,
-                epoch,
-                self.n_epochs,
-                train_loss,
-                val_loss,
-                self.experiment_dir,
-                self.model
+                self.logger, self.writer, epoch, self.n_epochs, train_loss, val_loss, self.experiment_dir, self.model
             )
-
 
     def train_one_epoch(self, epoch):
         self.model.train()
         total_loss = 0.0
 
         pbar = tqdm(self.train_loader, desc=f"Training epoch {epoch+1}")
-
 
         for model_input, target in pbar:
             self.optimizer.zero_grad()
@@ -86,7 +73,6 @@ class Trainer:
             self.training_steps += 1
 
         return total_loss / len(self.train_loader)
-
 
     def validate_one_epoch(self, epoch):
         self.model.eval()
