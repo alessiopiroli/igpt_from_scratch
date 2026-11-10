@@ -1,4 +1,7 @@
 *__pycache__
 .vscode
-artifacts/
+artifacts/logs
+artifacts/media/fmnist/
+artifacts/model
 data/
+*DS_Store
