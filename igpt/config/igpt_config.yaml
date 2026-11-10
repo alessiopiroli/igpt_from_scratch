@@ -6,7 +6,7 @@ DATA:
 
 TRAINING:
   n_epochs: 100
-  batch_size: 64
+  batch_size: 32
   lr: 3e-4
 
 MODEL:
@@ -17,7 +17,8 @@ MODEL:
   dropout_rate: 0.2
 
 GENERATOR:
-  state_dict_path: "artifacts/model/igpt_model.pth"
+  model_dir: "artifacts/model"
+  batch_size: 64
 
 LOGGING:
   logging_dir: "artifacts/logs"
