@@ -5,3 +5,4 @@ artifacts/media/fmnist/
 artifacts/model
 data/
 *DS_Store
+*__init__.py
