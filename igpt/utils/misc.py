@@ -79,8 +79,14 @@ def log_epoch(logger, writer, epoch, n_epochs, train_loss, val_loss, experiment_
     torch.save(model.state_dict(), save_path)
 
 
-def visualize_image(generated, img_size):
-    generated = generated[:, 1:].view(1, img_size, img_size)
+def visualize_image(cfg, generated, img_size):
+    generated = generated[:, 1:].view(-1, 1, img_size, img_size)
+    if cfg.DATA.dataset == "emnist":
+        generated = generated.transpose(-1, -2)
     generated = generated.to(torch.uint8).cpu()
-    generated_pil = transforms.ToPILImage()(generated)
-    generated_pil.show()
+    save_dir = os.path.join(cfg.LOGGING.media_dir, cfg.DATA.dataset)
+    os.makedirs(save_dir, exist_ok=True)
+    timestamp = time.strftime("%Y%m%d-%H%M%S")
+    for i, image in enumerate(generated):
+        generated_pil = transforms.ToPILImage()(image)
+        generated_pil.save(os.path.join(save_dir, f"{timestamp}_{i}.png"))
