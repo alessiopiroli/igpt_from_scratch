@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 
+
 class AttnHead(nn.Module):
     def __init__(self, cfg):
         super().__init__()

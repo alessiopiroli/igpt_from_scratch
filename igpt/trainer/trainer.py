@@ -1,11 +1,13 @@
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
-from igpt.utils.misc import get_device, log_data, log_model, setup_logging, log_epoch
-from igpt.dataset.fashion_mnist_dataset import FashionMNISTDataset
-from igpt.dataset.emnist_dataset import EMNISTDataset
-from igpt.model.igpt_model import GPT
 from tqdm import tqdm
+
+from igpt.dataset.emnist_dataset import EMNISTDataset
+from igpt.dataset.fashion_mnist_dataset import FashionMNISTDataset
+from igpt.model.igpt_model import GPT
+from igpt.utils.misc import (get_device, log_data, log_epoch, log_model,
+                             setup_logging)
 
 
 class Trainer:
@@ -82,7 +84,7 @@ class Trainer:
             total_loss += loss.item()
             self.writer.add_scalar("Training-Loss-Step", loss.item(), self.training_steps)
             self.training_steps += 1
-            
+
         return total_loss / len(self.train_loader)
 
 

@@ -4,8 +4,6 @@ from igpt.trainer.trainer import Trainer
 from igpt.utils.misc import load_config
 
 
-
-
 def main(args):
     cfg = load_config(args.cfg)
     trainer = Trainer(cfg)

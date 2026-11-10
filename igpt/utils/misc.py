@@ -1,9 +1,10 @@
 import logging
 import os
 import time
+
+import torch
 import yaml
 from easydict import EasyDict as edict
-import torch
 from torch.utils.tensorboard import SummaryWriter
 from torchinfo import summary
 from torchvision import transforms

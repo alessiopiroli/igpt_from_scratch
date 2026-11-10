@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import Dataset
-from torchvision.datasets import EMNIST
 from torchvision import transforms
+from torchvision.datasets import EMNIST
 
 
 class EMNISTDataset(Dataset):

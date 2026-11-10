@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import Dataset
-from torchvision.datasets import FashionMNIST
 from torchvision import transforms
+from torchvision.datasets import FashionMNIST
 
 
 class FashionMNISTDataset(Dataset):

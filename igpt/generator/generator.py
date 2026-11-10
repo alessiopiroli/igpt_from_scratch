@@ -2,8 +2,8 @@ import os
 
 import torch
 
-from igpt.utils.misc import get_device, setup_logging, visualize_image
 from igpt.model.igpt_model import GPT
+from igpt.utils.misc import get_device, setup_logging, visualize_image
 
 
 class Generator:
