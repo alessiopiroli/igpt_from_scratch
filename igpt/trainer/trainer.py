@@ -3,6 +3,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from igpt.utils.misc import get_device, log_data, log_model, setup_logging, log_epoch
 from igpt.dataset.fashion_mnist_dataset import FashionMNISTDataset
+from igpt.dataset.emnist_dataset import EMNISTDataset
 from igpt.model.igpt_model import GPT
 from tqdm import tqdm
 
@@ -33,6 +34,9 @@ class Trainer:
         if self.cfg.DATA.dataset == "fmnist":
             self.train_dataset = FashionMNISTDataset(self.cfg, train=True, download=True)
             self.validation_dataset = FashionMNISTDataset(self.cfg, train=False, download=True)
+        elif self.cfg.DATA.dataset == "emnist":
+            self.train_dataset = EMNISTDataset(self.cfg, train=True, download=True)
+            self.validation_dataset = EMNISTDataset(self.cfg, train=False, download=True)
         else:
             raise ValueError("Dataset not recognized!")
 
